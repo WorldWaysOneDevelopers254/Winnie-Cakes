@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Winnie's Cake Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f1e5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .login-form, .review-management, .announcement-management, .offer-management {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .login-form h2, .review-management h2, .announcement-management h2, .offer-management h2 {
+            margin-bottom: 20px;
+            color: #e74c3c;
+        }
+
+        .login-form input, .announcement-management input, .announcement-management textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-form button, .announcement-management button, .offer-management button {
+            width: 100%;
+            padding: 10px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-form button:hover, .announcement-management button:hover, .offer-management button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Review Management Section */
+        .review-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .review-item h4 {
+            color: #e74c3c;
+        }
+
+        .delete-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .offer-management {
+            display: none;
+        }
+
+        .edit-offer-btn, .delete-offer-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .edit-offer-btn:hover, .delete-offer-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Admin Login Form -->
+    <div class="login-form">
+        <h2>Admin Login</h2>
+        <input type="email" id="adminEmail" placeholder="Email" required>
+        <input type="password" id="adminPassword" placeholder="Password" required>
+        <button id="loginBtn">Login</button>
+    </div>
+
+    <!-- Customer Review Management Section -->
+    <div class="review-management" id="reviewManagement" style="display: none;">
+        <h2>Manage Customer Reviews</h2>
+        <div id="reviewsContainer">
+            <!-- Customer reviews will be dynamically loaded here -->
+        </div>
+    </div>
+
+    <!-- Offer Management Section -->
+    <div class="announcement-management" id="announcementForm" style="display: none;">
+        <h2>Create or Manage Offer</h2>
+        <textarea id="offerMessage" placeholder="Enter your offer or announcement" rows="4" required></textarea>
+        <input type="date" id="startDate" required>
+        <input type="date" id="endDate" required>
+        <button id="submitOffer">Submit Offer</button>
+    </div>
+
+    <!-- Display and Manage Existing Offer -->
+    <div class="offer-management" id="offerManagement" style="display: none;">
+        <h2>Manage Existing Offer</h2>
+        <p id="currentOfferMessage"></p>
+        <p><strong>Start Date:</strong> <span id="currentOfferStartDate"></span></p>
+        <p><strong>End Date:</strong> <span id="currentOfferEndDate"></span></p>
+        <button class="edit-offer-btn" id="editOfferBtn">Edit Offer</button>
+        <button class="delete-offer-btn" id="deleteOfferBtn">Delete Offer</button>
+    </div>
+
+    <script>
+        // Admin login credentials
+        const adminEmail = 'winniemwango2019@gmail.com';
+        const adminPassword = '@Mwango2321';
+
+        // Simulated reviews in localStorage
+        const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
+        // Handle login
+        document.getElementById('loginBtn').addEventListener('click', () => {
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
+
+            if (email === adminEmail && password === adminPassword) {
+                document.querySelector('.login-form').style.display = 'none';
+                document.getElementById('reviewManagement').style.display = 'block';
+                document.getElementById('announcementForm').style.display = 'block';
+                loadReviewsForAdmin();
+                loadExistingOffer();  // Load existing offer (if any)
+            } else {
+                alert('Incorrect email or password.');
+            }
+        });
+
+        // Load reviews for management
+        function loadReviewsForAdmin() {
+            const reviewsContainer = document.getElementById('reviewsContainer');
+            reviewsContainer.innerHTML = '';
+            reviews.forEach((review, index) => {
+                const reviewItem = document.createElement('div');
+                reviewItem.classList.add('review-item');
+                reviewItem.innerHTML = `
+                    <h4>${review.name}</h4>
+                    <p>${review.text}</p>
+                    <button class="delete-btn" onclick="deleteReview(${index})">Delete</button>
+                `;
+                reviewsContainer.appendChild(reviewItem);
+            });
+        }
+
+        // Delete a review
+        function deleteReview(index) {
+            reviews.splice(index, 1);
+            localStorage.setItem('reviews', JSON.stringify(reviews));
+            loadReviewsForAdmin();
+        }
+
+        // Handle offer submission
+        document.getElementById('submitOffer').addEventListener('click', () => {
+    const message = document.getElementById('offerMessage').value;
+    const startDate = document.getElementById('startDate').value;
+    const endDate = document.getElementById('endDate').value;
+
+    if (message && startDate && endDate) {
+        const offerData = {
+            message,
+            startDate,
+            endDate
+        };
+        localStorage.setItem('offerData', JSON.stringify(offerData)); // Save offer to localStorage
+        alert('Offer has been successfully created! It will now appear on the homepage.');
+    } else {
+        alert('Please fill in all fields.');
+    }
+});
+
+
+        // Load existing offer for management
+        function loadExistingOffer() {
+            const offerData = JSON.parse(localStorage.getItem('offerData'));
+
+            if (offerData) {
+                document.getElementById('offerManagement').style.display = 'block';
+                document.getElementById('currentOfferMessage').textContent = offerData.message;
+                document.getElementById('currentOfferStartDate').textContent = offerData.startDate;
+                document.getElementById('currentOfferEndDate').textContent = offerData.endDate;
+            }
+        }
+
+        // Handle offer deletion
+        document.getElementById('deleteOfferBtn').addEventListener('click', () => {
+            localStorage.removeItem('offerData');
+            document.getElementById('offerManagement').style.display = 'none';
+            alert('Offer has been deleted.');
+        });
+
+        // Handle offer submission
+document.getElementById('submitOffer').addEventListener('click', () => {
+    const message = document.getElementById('offerMessage').value;
+    const startDate = document.getElementById('startDate').value;
+    const endDate = document.getElementById('endDate').value;
+
+    if (message && startDate && endDate) {
+        const offerData = {
+            message,
+            startDate,
+            endDate
+        };
+        localStorage.setItem('offerData', JSON.stringify(offerData));
+        alert('Offer has been successfully created! It will now appear on the homepage.');
+        loadExistingOffer();  // Load the newly created offer for management
+    } else {
+        alert('Please fill in all fields.');
+    }
+});
+
+    </script>
+
+</body>
+</html>

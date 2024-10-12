@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant cakes and Events</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="#customOrderBtn">Contact</a></li>
+                <li><a href="Review.html">Rate Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <!-- Home Section (Cake Catalogue in Table Form) -->
+    <section id="home">
+        <h1>Welcome to Elegant cakes and Events</h1>
+         <!-- Cake Icon Animation Section -->
+         <div class="cake-animation-container">
+            <div class="cake-icon"><i class="fas fa-birthday-cake"></i></div>
+            <div class="cake-icon">&#127856;</div>
+            <div class="cake-icon"><i class="fas fa-birthday-cake"></i></div>
+            <div class="cake-icon">&#127856;</div>
+        </div>
+
+        <!-- Styled Table for Cake Categories -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Cake Category</th>
+                    <th>Flavor</th>
+                    <th>Weight</th>
+                    <th>Price</th>
+                    <th>Order</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Graduation & Celebration Cake</td>
+                    <td>Lemon/Vanilla/Passion/Strawberry</td>
+                    <td>1kg</td>
+                    <td>2700 Ksh</td>
+                    <td><button onclick="placeOrder('Celebration Cake', 1, 2700)">Place Order</button></td>
+                </tr>
+                <tr>
+                    <td>Graduation & Celebration Cake</td>
+                    <td>Pinecolada/Blackforest/Blueberry/Blackcurrent/Whiteforest</td>
+                    <td>1kg</td>
+                    <td>2800 Ksh</td>
+                    <td><button onclick="placeOrder('Celebration Cake', 1, 2800)">Place Order</button></td>
+                </tr>
+                <tr>
+                    <td>Graduation & Celebration Cake</td>
+                    <td>Lemon/Vanilla/Passion/Strawberry</td>
+                    <td>2kg</td>
+                    <td>4000 Ksh</td>
+                    <td><button onclick="placeOrder('Celebration Cake', 2, 4000)">Place Order</button></td>
+                </tr>
+                <tr>
+                    <td>Graduation & Celebration Cake</td>
+                    <td>Pinecolada/Blackforest/Blueberry/Blackcurrent/Whiteforest</td>
+                    <td>2kg</td>
+                    <td>4200 Ksh</td>
+                    <td><button onclick="placeOrder('Celebration Cake', 2, 4200)">Place Order</button></td>
+                </tr>
+                <tr>
+                    <td>Graduation & Celebration Cake</td>
+                    <td>Lemon/Vanilla/Passion/Strawberry</td>
+                    <td>3kg</td>
+                    <td>5000 Ksh</td>
+                    <td><button onclick="placeOrder('Celebration Cake', 3, 5000)">Place Order</button></td>
+                </tr>
+                <tr>
+                    <td>Graduation & Celebration Cake</td>
+                    <td>Pinecolada/Blackforest/Blueberry/Blackcurrent/Whiteforest</td>
+                    <td>3kg</td>
+                    <td>5400 Ksh</td>
+                    <td><button onclick="placeOrder('Celebration Cake', 3, 5400)">Place Order</button></td>
+                </tr>
+                <tr>
+                    <td>Graduation & Celebration Cake</td>
+                    <td>Lemon/Vanilla/Passion/Strawberry</td>
+                    <td>4kg</td>
+                    <td>6500 Ksh</td>
+                    <td><button onclick="placeOrder('Celebration Cake', 4, 6500)">Place Order</button></td>
+                </tr>
+                <tr>
+                    <td>Graduation & Celebration Cake</td>
+                    <td>Pinecolada/Blackforest/Blueberry/Blackcurrent/Whiteforest</td>
+                    <td>4kg</td>
+                    <td>6800 Ksh</td>
+                    <td><button onclick="placeOrder('Celebration Cake', 4, 6800)">Place Order</button></td>
+                </tr>
+                <tr>
+                    <td>Graduation & Celebration Cake</td>
+                    <td>Lemon/Vanilla/Passion/Strawberry</td>
+                    <td>5kg</td>
+                    <td>7000 Ksh</td>
+                    <td><button onclick="placeOrder('Celebration Cake', 5, 7000)">Place Order</button></td>
+                </tr>
+                <tr>
+                    <td>Graduation & Celebration Cake</td>
+                    <td>Pinecolada/Blackforest/Blueberry/Blackcurrent/Whiteforest</td>
+                    <td>5kg</td>
+                    <td>7300 Ksh</td>
+                    <td><button onclick="placeOrder('Celebration Cake', 5, 7300)">Place Order</button></td>
+                </tr>
+                <tr>
+                    <td>Graduation & Celebration Cake</td>
+                    <td>Lemon/Vanilla/Passion/Strawberry</td>
+                    <td>6kg</td>
+                    <td>8900 Ksh</td>
+                    <td><button onclick="placeOrder('Celebration Cake', 6, 8900)">Place Order</button></td>
+                </tr>
+                <tr>
+                    <td>Graduation & Celebration Cake</td>
+                    <td>Pinecolada/Blackforest/Blueberry/Blackcurrent/Whiteforest</td>
+                    <td>6kg</td>
+                    <td>9100 Ksh</td>
+                    <td><button onclick="placeOrder('Celebration Cake', 6, 9100)">Place Order</button></td>
+                </tr>
+                <tr>
+                    <td>Graduation & Celebration Cake</td>
+                    <td>Lemon/Vanilla/Passion/Strawberry</td>
+                    <td>7kg</td>
+                    <td>11800 Ksh</td>
+                    <td><button onclick="placeOrder('Celebration Cake', 7, 11800)">Place Order</button></td>
+                </tr>
+                <tr>
+                    <td>Graduation & Celebration Cake</td>
+                    <td>Pinecolada/Blackforest/Blueberry/Blackcurrent/Whiteforest</td>
+                    <td>7kg</td>
+                    <td>12000 Ksh</td>
+                    <td><button onclick="placeOrder('Celebration Cake', 7, 12000)">Place Order</button></td>
+                </tr>
+                <tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+
+        <!-- Custom Order Button -->
+        <button id="customOrderBtn">Place Custom Order</button>
+    </section>
+
+    <!-- Regular Order Contact Form (shown after placing a regular order) -->
+    <section id="contact" style="display:none;">
+        <h2>Contact Us (Regular Order)</h2>
+        <div id="order-summary">
+            <h3>Order Summary</h3>
+            <p id="order-details">No order placed yet.</p>
+        </div>
+        <form id="regularOrderForm">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="phone">Your Phone Number:</label>
+            <input type="tel" id="phone" required>
+
+            <label for="deliveryDateConfirm">Delivery Date:</label>
+            <input type="date" id="deliveryDateConfirm" required>
+
+            <button type="submit">Place Order Now</button>
+        </form>
+    </section>
+
+    <!-- Custom Order Form (shown when making a custom order) -->
+    <section id="customOrderSection" style="display:none;">
+        <h2>Customize Your Order</h2>
+        <form id="customOrderForm">
+            <label for="customKgs">Number of Kgs:</label>
+            <input type="number" id="customKgs" min="0.5" max="10" step="0.5" required>
+
+            <label for="customFlavor">Choose Flavors:</label>
+            <select id="customFlavor" multiple required>
+                <option value="Lemon">Lemon</option>
+                <option value="Vanilla">Vanilla</option>
+                <option value="Passion">Passion</option>
+                <option value="Pinacolada">Pinacolada</option>
+                <option value="Blueberry">Blueberry</option>
+                <option value="Blackcurrant">Blackcurrant</option>
+                <option value="Chocolate">Chocolate</option>
+                <option value="Red Velvet">Red Velvet</option>
+                <option value="Black Forest">Black Forest</option>
+                <option value="White Forest">White Forest</option>
+            </select>
+
+            <label for="deliveryTime">Delivery Time:</label>
+            <input type="time" id="deliveryTime" required>
+
+            <label for="deliveryDate">Delivery Date:</label>
+            <input type="date" id="deliveryDate" required>
+
+            <label for="customName">Your Name:</label>
+            <input type="text" id="customName" required>
+
+            <label for="customEmail">Your Email:</label>
+            <input type="email" id="customEmail" required>
+
+            <label for="customPhone">Your Phone Number:</label>
+            <input type="tel" id="customPhone" required>
+
+            <button type="submit">Customize Your Order</button>
+        </form>
+    </section>
+
+    <!-- Ensure script is placed before closing body tag -->
+    <script src="script.js"></script>
+    <!-- Footer Section -->
+     <section>
+        <!-- Footer Section -->
+    <footer>
+        
+        <!-- Social Media Links -->
+        <div class="social-media">
+            <a href="https://www.facebook.com/WinniesCakeStore" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com/@elegantcakes3?_t=8qUUEsFi82P&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/254758146421" target="_blank"><i class="fab fa-whatsapp"></i></a> <!-- Replace with actual WhatsApp number -->
+        </div>
+        <br>
+        <br>
+        <br>
+        &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Developed by <a href="https://www.worldwaysonedevelopers.co.ke/" target="_blank">Worldwaysone Developers</a>
+    </footer>
+     </section>
+     
+</body>
+<script>
+    // Store the order details globally
+let orderDetails = {};
+
+// Function to handle placing an order and showing the regular contact form
+function placeOrder(cakeType, kg, price) {
+    // Store the selected order details
+    orderDetails = {
+        cakeType: cakeType,
+        kg: kg,
+        price: price
+    };
+
+    // Display the order summary in the regular order form
+    const orderSummary = `Cake: ${cakeType}, Quantity: ${kg}kg, Total Price: ${price} Ksh`;
+    document.getElementById("order-details").textContent = orderSummary;
+
+    // Show the regular order form and hide the custom order form
+    document.getElementById("contact").style.display = "block";
+    document.getElementById("customOrderSection").style.display = "none";
+    window.location.href = "#contact";
+}
+
+// Function to display the custom order form
+document.getElementById("customOrderBtn").addEventListener("click", function() {
+    document.getElementById("customOrderSection").style.display = "block";
+    document.getElementById("contact").style.display = "none";
+    window.location.href = "#customOrderSection";
+});
+
+// Handle regular order form submission
+document.getElementById("regularOrderForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const deliveryDateConfirm = document.getElementById("deliveryDateConfirm").value;
+
+    if (new Date(deliveryDateConfirm) < new Date()) {
+        alert('Please select a valid delivery date.');
+        return;
+    }
+
+    // Construct the WhatsApp message for a regular order
+    const whatsappMessage = `Hi, my name is ${name}. I would like to place an order for:
+Cake: ${orderDetails.cakeType}
+Quantity: ${orderDetails.kg}kg
+Total Price: ${orderDetails.price} Ksh.
+Delivery Date: ${deliveryDateConfirm}
+
+Please contact me at:
+Email: ${email}
+Phone: ${phone}`;
+
+    // WhatsApp URL with pre-filled message
+    const whatsappUrl = `https://wa.me/254758146421?text=${encodeURIComponent(whatsappMessage)}`; // Replace with the actual business phone number
+
+    // Redirect to WhatsApp with the message
+    window.open(whatsappUrl, '_blank');
+});
+
+// Handle custom order form submission
+document.getElementById("customOrderForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    const kgs = document.getElementById("customKgs").value;
+    const flavors = Array.from(document.getElementById("customFlavor").selectedOptions).map(option => option.value);
+    const deliveryTime = document.getElementById("deliveryTime").value;
+    const deliveryDate = document.getElementById("deliveryDate").value;
+    const name = document.getElementById("customName").value;
+    const email = document.getElementById("customEmail").value;
+    const phone = document.getElementById("customPhone").value;
+
+    if (new Date(deliveryDate) < new Date()) {
+        alert('Please select a valid delivery date.');
+        return;
+    }
+
+    // Construct the WhatsApp message for a custom order
+    const whatsappMessage = `Hi, my name is ${name}. I would like to place a custom order for:
+Cake Flavors: ${flavors.join(", ")}
+Quantity: ${kgs}kg
+Delivery Time: ${deliveryTime}
+Delivery Date: ${deliveryDate}
+
+Please contact me at:
+Email: ${email}
+Phone: ${phone}`;
+
+    // WhatsApp URL with pre-filled message
+    const whatsappUrl = `https://wa.me/254758146421?text=${encodeURIComponent(whatsappMessage)}`; // Replace with the actual business phone number
+
+    // Redirect to WhatsApp with the message
+    window.open(whatsappUrl, '_blank');
+});
+
+</script>
+</html>

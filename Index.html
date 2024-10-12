@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Cakes and Events | Home</title>
+
+    <!-- Include Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f1e5;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        /* Offer Message Styles */
+        .offer-container {
+            background-color: #ffeaa7;
+            color: #e74c3c;
+            padding: 15px;
+            font-size: 1.5em;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none; /* Hidden by default */
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #e74c3c;
+            margin-top: 50px;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background-image: url('cake-hero.jpg'); /* Add a background cake image here */
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Get Catalogue Button */
+        .catalogue-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #e74c3c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .catalogue-btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Cake Image Gallery */
+        .cake-gallery {
+            display: flex;
+            justify-content: center;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .cake-item {
+            position: relative;
+            width: 300px;
+            margin: 20px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .cake-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .cake-item:hover img {
+            transform: scale(1.1); /* Zoom-in effect */
+        }
+
+        /* Pop-up on hover */
+        .cake-item .popup {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            font-size: 1.2em;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+
+        .cake-item:hover .popup {
+            opacity: 1;
+            transform: translateY(0); /* Pop up from bottom */
+        }
+
+        /* Review Section */
+        .review-section {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #fff;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .review-list {
+            display: flex;
+            justify-content: flex-start;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: scroll-left 15s linear infinite;
+        }
+
+        @keyframes scroll-left {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        .review-item {
+            display: inline-block;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-right: 20px;
+            border-radius: 10px;
+            min-width: 200px;
+        }
+
+        .review-item h4 {
+            color: #e74c3c;
+            font-size: 1.2em;
+        }
+
+        .review-item .stars {
+            color: orange;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            background-color: #25D366;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 2em;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1); /* Slight zoom effect */
+        }
+
+        /* Review Form Popup */
+        .review-form-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .review-form-popup input, 
+        .review-form-popup textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .review-form-popup button {
+            padding: 10px 20px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Admin Button */
+        .admin-login-btn {
+            display: inline-block;
+            background-color: transparent;
+            border: none;
+            color: #f39c12;
+            font-size: 2em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="offerContainer" class="offer-container" style="display: none;">
+        <p id="offerMessage"></p>
+    </div>
+    <!-- JavaScript to Load Offer from localStorage -->
+<script>
+    // JavaScript to Load Offer from localStorage
+document.addEventListener('DOMContentLoaded', () => {
+    const offerData = JSON.parse(localStorage.getItem('offerData'));
+
+    if (offerData) {
+        const offerContainer = document.getElementById('offerContainer');
+        const offerMessage = document.getElementById('offerMessage');
+        
+        const currentDate = new Date();  // Get current date
+        const startDate = new Date(offerData.startDate);  // Convert offer start date to Date object
+        const endDate = new Date(offerData.endDate);  // Convert offer end date to Date object
+
+        // Check if the current date is within the start and end date
+        if (currentDate >= startDate && currentDate <= endDate) {
+            offerMessage.textContent = `🎉 ${offerData.message} 🎉`;
+            offerContainer.style.display = 'block';  // Show the offer message
+        } else {
+            console.log("Offer is not valid on this date.");
+        }
+    } else {
+        console.log("No offer found in localStorage.");
+    }
+});
+
+</script>
+    
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="Catal.html">Services</a></li>
+                <li><a href="Review.html">Rate Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Elegant cakes and Event</h1>
+        <p>Freshly baked delights for every occasion</p>
+        <a href="Catal.html" class="catalogue-btn">Get Catalogue</a>
+    </div>
+
+    <!-- Cake Image Gallery with Hover Effects -->
+    <div class="cake-gallery">
+        <div class="cake-item">
+            <img src="Images/Birthday-cake.jpg" alt="Birthday Cake">
+            <div class="popup">Delicious Birthday Cake</div>
+        </div>
+        <div class="cake-item">
+            <img src="Images/wedding-cake.jpg" alt="Wedding Cake">
+            <div class="popup">Elegant Wedding Cake</div>
+        </div>
+        <div class="cake-item">
+            <img src="Images/cupcakes.jpg" alt="Cupcakes">
+            <div class="popup">Tasty Cupcakes</div>
+        </div>
+    </div>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/254758146421" target="_blank" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Review Section -->
+    <div class="review-section">
+        <h2>Customer Reviews</h2>
+        <div class="review-list" id="reviewList">
+            <!-- Reviews will be dynamically loaded here -->
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="social-media">
+            <a href="https://www.facebook.com/WinniesCakeStore" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com/@elegantcakes3?_t=8qUUEsFi82P&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/254758146421" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <br><br>
+        <button class="admin-login-btn" id="adminLoginBtn"><i class="fas fa-birthday-cake"></i></button>
+        <br><br>
+        &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Developed by <a href="https://www.worldwaysonedevelopers.co.ke/" target="_blank">Worldwaysone Developers</a>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Simulated database (localStorage for reviews)
+        const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
+        // Load reviews
+        function loadReviews() {
+            const reviewList = document.getElementById('reviewList');
+            reviewList.innerHTML = ''; // Clear old reviews
+            reviews.forEach(review => {
+                const reviewItem = document.createElement('div');
+                reviewItem.classList.add('review-item');
+                reviewItem.innerHTML = `
+                    <h4>${review.name}</h4>
+                    <p>${review.text}</p>
+                    <div class="stars">${'★'.repeat(5)}</div>
+                `;
+                reviewList.appendChild(reviewItem);
+            });
+        }
+        loadReviews();
+
+        // Admin button redirect to Admin page
+        document.getElementById('adminLoginBtn').addEventListener('click', () => {
+            window.location.href = 'Admin.html';  // Redirect to Admin page
+        });
+    </script>
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/66cdee4fea492f34bc0aa702/1i6a6lpqp';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+</html>
